@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>618活动</title>
+    <link href="./imgs/logo618.jpg" rel="icon" type="image/x-ico"/>
+    <style>
+        /* 小屏幕手机端 */
+        @media (min-width: 0px) and (max-width: 768px) {
+            .bannerDiv {
+                border: 2px black;
+                width: 400px;
+                height: 149px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .articleImg {
+                width: 80px;
+                height: 80px;
+            }
+
+            .articleImgBig {
+                position: absolute;
+                margin-left: 90px;
+                width: 200px;
+                height: 264px;
+                display: none;
+            }
+
+            .articleImg:hover ~ .articleImgBig {
+                position: absolute;
+                margin-left: 90px;
+                width: 200px;
+                height: 264px;
+                display: flex;
+                border: 1px solid #A5A5A5;
+            }
+
+            .article {
+                display: flex;
+                background: white;
+                align-items: center;
+            }
+
+            .articleContent {
+                margin-left: 10px;
+            }
+
+            .articleContent a {
+                display: block;
+            }
+
+            .articleTitle {
+                color: #000000;
+                margin-top: 10px;
+                font-size: 16px;
+            }
+
+            .articlePrice {
+                color: #000000;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 14px;
+            }
+
+            .articleCoupon {
+                color: #A5A5A5;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 14px;
+            }
+
+            .articlePacket {
+                color: #A5A5A5;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 14px;
+            }
+
+            .divider {
+                background-color: #EAEAEA;
+                width: 100%;
+                height: 1px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: red;
+            }
+        }
+
+        /* 中等屏幕（桌面显示器，大于等于 992px） */
+        @media (min-width: 768px) and (max-width: 992px) {
+            .bannerDiv {
+                border: 2px black;
+                width: 800px;
+                height: 300px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .articleImg {
+                width: 100px;
+                height: 100px;
+            }
+
+            .articleImgBig {
+                position: absolute;
+                margin-left: 110px;
+                width: 300px;
+                height: 400px;
+                display: none;
+            }
+
+            .articleImg:hover ~ .articleImgBig {
+                position: absolute;
+                margin-left: 110px;
+                width: 300px;
+                height: 400px;
+                display: flex;
+                border: 1px solid #A5A5A5;
+            }
+
+            .article {
+                display: flex;
+                background: white;
+                align-items: center;
+            }
+
+            .articleContent {
+                margin-left: 10px;
+            }
+
+            .articleContent a {
+                display: block;
+            }
+
+            .articleTitle {
+                color: #000000;
+                margin-top: 10px;
+                font-size: 18px;
+            }
+
+            .articlePrice {
+                color: #000000;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 16px;
+            }
+
+            .articleCoupon {
+                color: #A5A5A5;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 14px;
+            }
+
+            .articlePacket {
+                color: #A5A5A5;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 14px;
+            }
+
+            .divider {
+                background-color: #EAEAEA;
+                width: 100%;
+                height: 1px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: red;
+            }
+        }
+
+        /* 大屏幕（大桌面显示器，大于等于 1200px） */
+        @media (min-width: 992px) {
+            .bannerDiv {
+                border: 2px black;
+                width: 800px;
+                height: 300px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .articleImg {
+                width: 130px;
+                height: 130px;
+            }
+
+            .articleImgBig {
+                position: absolute;
+                margin-left: 140px;
+                width: 400px;
+                height: 530px;
+                display: none;
+            }
+
+            .articleImg:hover ~ .articleImgBig {
+                position: absolute;
+                margin-left: 140px;
+                width: 400px;
+                height: 530px;
+                display: flex;
+                border: 1px solid #A5A5A5;
+            }
+
+            .article {
+                display: flex;
+                background: white;
+                align-items: center;
+            }
+
+            .articleContent {
+                margin-left: 10px;
+            }
+
+            .articleContent a {
+                display: block;
+            }
+
+            .articleTitle {
+                color: #000000;
+                margin-top: 10px;
+                font-size: 18px;
+            }
+
+            .articlePrice {
+                color: #000000;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 16px;
+            }
+
+            .articleCoupon {
+                color: #A5A5A5;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 14px;
+            }
+
+            .articlePacket {
+                color: #A5A5A5;
+                margin-top: 5px;
+                margin-left: 5px;
+                font-size: 14px;
+            }
+
+            .divider {
+                background-color: #EAEAEA;
+                width: 100%;
+                height: 1px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: red;
+            }
+        }
+
+
+        /* 滑动导航 */
+        nav {
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: #333;
+            padding: 5px;
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+
+    </style>
+</head>
+<header></header>
+<body onload="init()">
+<main>
+    <nav>
+        <a href="#" onclick="tableClick('家电')">家电</a>
+        <a href="#" onclick="tableClick('手机')">手机</a>
+        <a href="#" onclick="tableClick('电脑')">电脑</a>
+        <a href="#" onclick="tableClick('美妆/护肤')">美妆/护肤</a>
+    </nav>
+    <section class="banner">
+        <div class="bannerDiv" onclick="bannerClick()">
+            <img id="lbt" src="./imgs/banner1.png" width="100%" height="100%"/>
+        </div>
+    </section>
+
+    <section>
+        <!-- <div class="article" onclick="toDetail(0)">
+             <img class="articleImg" src="./imgs/fengshan.jpg"/>
+             <img class="articleImgBig" src="./imgs/fengshan.jpg"/>
+
+             <div class="articleContent">
+                 <div class="articleTitle">
+                     【京东】【领券直降】艾美特（AIRMATE）“海鸥”京东小家智能空气循环扇电风扇家用20档直流变频遥控360度摆头落地式风扇
+                     FA18-AD61
+                 </div>
+                 <div class="articlePrice">京东价: ¥799.00 <br/>
+                     券后价: ¥729.00
+                 </div>
+                 <a class="articleCoupon">领券抢购: https://u.jd.com/Obkc16h</a>
+                 <a class="articlePacket">领红包 更省钱: https://u.jd.com/OskjOgB</a>
+             </div>
+         </div>-->
+        <div id="contentTest"></div>
+    </section>
+</main>
+<footer>
+    <p style="color:#A5A5A5;margin-top:20px">版权所有 © 2023 yudonghui</p>
+</footer>
+</body>
+</html>
+<script src="./jquery-3.7.0.min.js"></script>
+<!--<script src="./jquery-3.0.0.js"></script>-->
+<script type="text/javascript" src="./md5.js"></script>
+<script>
+    function init() {
+        setInterval("changeImg()", 2000);
+        tableClick("家电")
+    }
+
+    let listBanner = [
+        {
+            time: '05:31',
+            titleName: '京东20周年庆 预售火爆开启	预售全场免定金<br/>京东20周年庆 预售火爆开启	预售全场免定金',
+            srcPath: './imgs/banner1.png',
+            articleUrl: 'https://u.jd.com/OQmMunF'
+        },
+        {
+            time: '06:05',
+            titleName: '美菱618狂欢节 以旧换新至高省550元',
+            srcPath: './imgs/banner2.png',
+            articleUrl: 'https://u.jd.com/OQhJ0K4'
+        },
+        {
+            time: '06:05',
+            titleName: '美妆护肤618狂欢购 美妆正品不止买1赠1',
+            srcPath: './imgs/banner3.png',
+            articleUrl: 'https://u.jd.com/aqLufBy'
+        },
+        {
+            time: '06:05',
+            titleName: '618家乡酒节 好酒8折抢',
+            srcPath: './imgs/banner4.png',
+            articleUrl: 'https://u.jd.com/azLD4Hx'
+        },
+        {
+            time: '06:05',
+            titleName: '京东国际618盛典 进口好物 低至9.9元',
+            srcPath: './imgs/banner5.png',
+            articleUrl: 'https://u.jd.com/asLBQgZ'
+        },
+        {
+            time: '06:05',
+            titleName: '京东超市618 每满300减50 价保30天',
+            srcPath: './imgs/banner6.png',
+            articleUrl: 'https://u.jd.com/aqGJJLN'
+        },
+    ];
+    let i = 0;
+    let total = listBanner.length;
+
+    function changeImg() {
+        if (i >= total) {
+            i = 0;
+        } else {
+            document.getElementById("lbt").src = listBanner[i].srcPath;
+            i++;
+        }
+    }
+
+    function bannerClick() {
+        if (i > 0) {
+            window.location.href = listBanner[i - 1].articleUrl;
+        } else {
+            window.location.href = listBanner[i].articleUrl;
+        }
+    }
+
+
+    let listJiadian = [
+        {
+            titleName: '【京东】【领券直降】艾美特（AIRMATE）“海鸥”京东小家智能空气循环扇电风扇家用20档直流变频遥控360度摆头落地式风扇FA18-AD61',
+            articlePrice: '京东价: ¥799.00 <br/>券后价: ¥299.00',
+            srcPath: './imgs/fengshan.jpg',
+            srcPathBig: './imgs/fengshanbig.jpg',
+            articleCoupon: 'https://u.jd.com/Obkc16h',
+            articlePacket: 'https://u.jd.com/OskjOgB'
+        },
+        {
+            titleName: '【京东】【领券直降】海尔（Haier）冰箱412L法式双开门四开门多门家用一级能效双变频家用超薄嵌入式风冷无霜超大容量家电智能旗舰 412L+母婴专储空间+冷藏三档变温+黑金净化系统',
+            articlePrice: '预售价: ¥3297.90 <br/>券后预售价: ¥2997.90',
+            srcPath: './imgs/bingxiang2.jpg',
+            srcPathBig: './imgs/bingxiang2big.jpg',
+            articleCoupon: 'https://u.jd.com/OuhU5gN',
+            articlePacket: 'https://u.jd.com/Ozh5XDj'
+        },
+        {
+            titleName: '【京东】海尔（Haier）216升三开门多门小型迷你家用电冰箱宿舍租房小户型低音节能不占地中门软冷冻以旧换新BCD-216STPT',
+            articlePrice: '京东价: ¥1125.00',
+            srcPath: './imgs/bingxiang1.jpg',
+            srcPathBig: './imgs/bingxiang1big.jpg',
+            articleCoupon: 'https://u.jd.com/O8hog0e',
+            articlePacket: 'https://u.jd.com/OQhFkIB'
+        },
+        {
+            titleName: '【京东】【领券直降】小天鹅（LittleSwan）滚筒洗衣机全自动 洗烘一体机 深层除菌螨 蒸汽速烘 10公斤大容量 以旧换新 TD100PURE',
+            articlePrice: '预售价: ¥2199.00 <br/>券后预售价: ¥2049.00',
+            srcPath: './imgs/xiyiji1.jpg',
+            srcPathBig: './imgs/xiyiji1big.jpg',
+            articleCoupon: 'https://u.jd.com/astC1yH',
+            articlePacket: 'https://u.jd.com/Ozh4Spg'
+        },
+        {
+            titleName: '【京东】【领券直降】小天鹅（LittleSwan）滚筒洗衣机全自动 超薄全嵌-纤彩 小乌梅【TG100RVIC】1.1洗净比 超微净泡 大筒径10公斤',
+            articlePrice: '预售价:  ¥3799.00 <br/>券后预售价: ¥3599.00',
+            srcPath: './imgs/xiyiji2.jpg',
+            srcPathBig: './imgs/xiyiji2big.jpg',
+            articleCoupon: 'https://u.jd.com/aqtIOSt',
+            articlePacket: 'https://u.jd.com/Ozhmhqe'
+        },
+        {
+            titleName: '【京东】美的（Midea）空调 1.5匹 酷省电 新一级能效 变频冷暖 自清洁 壁挂式空调挂机 智能家电 KFR-35GW/N8KS1-1',
+            articlePrice: '预售价: ¥2549.00',
+            srcPath: './imgs/kongtiao1.jpg',
+            srcPathBig: './imgs/kongtiao1big.jpg',
+            articleCoupon: ' https://u.jd.com/auLhh1n',
+            articlePacket: 'https://u.jd.com/asCCFkO'
+        },
+
+        {
+            titleName: '【京东】【领券直降】奥克斯（AUX） 空调 1.5匹 新一级能效 空调挂机 变频冷暖 卧室挂式独立除湿KFR-35GW/BpR3AQE1(B1)家用省电',
+            articlePrice: '预售价: ¥2099.00 <br/>券后预售价: ¥2069.00',
+            srcPath: './imgs/kongtiao2.jpg',
+            srcPathBig: './imgs/kongtiao2big.jpg',
+            articleCoupon: 'https://u.jd.com/auCdqLf',
+            articlePacket: 'https://u.jd.com/aiCMKwT'
+        },
+        {
+            titleName: '【京东】【领券直降】格力（GREE）3匹 京致 冷暖分送 衡温空间 自清洁 智能 客厅空调立式空调柜机KFR-72LW/NhAj1BGj',
+            articlePrice: '预售价: ¥9999.00 <br/>券后预售价: ¥8499.00',
+            srcPath: './imgs/kongtiao3.jpg',
+            srcPathBig: './imgs/kongtiao3big.jpg',
+            articleCoupon: 'https://u.jd.com/aqLeZl9',
+            articlePacket: 'https://u.jd.com/abCs68o'
+        },
+        {
+            titleName: '【京东】【领券直降】美的（Midea）1.5匹 风尊 时尚版 新一级能效 变频冷暖 壁挂式空调挂机 京东小家智能家电 KFR-35GW/N8MXC1',
+            articlePrice: '预售价: ¥2899.00 <br/>券后预售价: ¥2849.00',
+            srcPath: './imgs/kongtiao4.jpg',
+            srcPathBig: './imgs/kongtiao4big.jpg',
+            articleCoupon: 'https://u.jd.com/aiZtmsN',
+            articlePacket: 'https://u.jd.com/a8W5gGA'
+        },
+        {
+            titleName: '【京东】小米1.5匹 新一级能效 变频冷暖  智能自清洁 壁挂式卧室空调挂机 KFR-35GW/N1A1',
+            articlePrice: '预售价: ¥1899.00',
+            srcPath: './imgs/kongtiao5.jpg',
+            srcPathBig: './imgs/kongtiao5big.jpg',
+            articleCoupon: 'https://u.jd.com/a8ZLK9a',
+            articlePacket: 'https://u.jd.com/abZLqu9'
+        },
+        {
+            titleName: '【京东】【领券直降】格力（GREE）空调 京东小家智能生态 1.5匹 云锦Ⅱ 新1级能效 壁挂式卧室挂机(KFR-35GW/NhAd1BAj)',
+            articlePrice: '预售价: ¥3299.00 <br/>券后预售价: ¥3269.00',
+            srcPath: './imgs/kongtiao6.jpg',
+            srcPathBig: './imgs/kongtiao6big.jpg',
+            articleCoupon: 'https://u.jd.com/aQWUYem',
+            articlePacket: 'https://u.jd.com/azWk7gF'
+        },
+        {
+            titleName: '【京东】【领券直降】海尔（Haier）新风 新一级能效 变频 冷暖 壁挂式 1.5匹 空调挂机 五重净化 KFR-35GW/B4AFA81U1(白) 以旧换新',
+            articlePrice: '预售价: ¥2599.00 <br/>券后预售价: ¥2399.00',
+            srcPath: './imgs/kongtiao7.jpg',
+            srcPathBig: './imgs/kongtiao7big.jpg',
+            articleCoupon: 'https://u.jd.com/aqWxrcJ',
+            articlePacket: 'https://u.jd.com/aiWUGqC'
+        },
+        {
+            titleName: '【京东】【领券直降】九阳（Joyoung）肖战推荐电饭煲 电饭锅3L 2-6人 大火力 智能预约多功能焖煮防溢家用迷你电饭煲F-30FZ630',
+            articlePrice: '京东价: ¥139.00 <br/>券后价: ¥129.00',
+            srcPath: './imgs/dianfanbao1.jpg',
+            srcPathBig: './imgs/dianfanbao1big.jpg',
+            articleCoupon: 'https://u.jd.com/aiGX6om',
+            articlePacket: 'https://u.jd.com/asG4oY4'
+        },
+        {
+            titleName: '【京东】苏泊尔（SUPOR）电饭煲电饭锅4L蓝钻厚釜内胆3-8人使用可添加记忆功能8大菜单家用智能电饭煲40FC776',
+            articlePrice: '京东价: ¥249.00',
+            srcPath: './imgs/dianfanbao2.jpg',
+            srcPathBig: './imgs/dianfanbao2big.jpg',
+            articleCoupon: 'https://u.jd.com/azG72rH',
+            articlePacket: 'https://u.jd.com/aqGXNN3'
+        },
+        {
+            titleName: '【京东】苏泊尔（SUPOR）电饭煲Pro电饭锅4L远红外系列 IH电磁加热 远红外穿透本釜内胆 家用智能多功能电饭煲SF40HC786',
+            articlePrice: '京东价: ¥769.00',
+            srcPath: './imgs/dianfanbao3.jpg',
+            srcPathBig: './imgs/dianfanbao3big.jpg',
+            articleCoupon: 'https://u.jd.com/auGolcu',
+            articlePacket: 'https://u.jd.com/auGm059'
+        },
+        {
+            titleName: '【京东】【领券直降】美的（Midea）纤V系列 IH智能电饭煲Pro电饭锅家用4L大容量一级能效预约精铁釜蒸米饭锅FB40S701（3-8人）',
+            articlePrice: '京东价: ¥550.00 <br/>券后价:  ¥520.00',
+            srcPath: './imgs/dianfanbao4.jpg',
+            srcPathBig: './imgs/dianfanbao4big.jpg',
+            articleCoupon: 'https://u.jd.com/asG49qv',
+            articlePacket: 'https://u.jd.com/a8GFEW8'
+        },
+        {
+            titleName: '【京东】【领券直降】美的（Midea）速嫩感电压力锅 8分钟一道菜 家用5L IH猛火1600W顶置触控 自动排气 双钢胆高压锅电饭煲MY-S5879K',
+            articlePrice: '京东价: ¥999.00 <br/>券后价: ¥899.00',
+            srcPath: './imgs/dianfanbao5.jpg',
+            srcPathBig: './imgs/dianfanbao5big.jpg',
+            articleCoupon: 'https://u.jd.com/auWecZf',
+            articlePacket: 'https://u.jd.com/aiZdLXG'
+        },
+        {
+            titleName: '【京东】【领券直降】九阳（Joyoung）破壁机家用豆浆机升级降噪多功能智能预约榨汁机搅拌果汁机料理机绞肉机辅食机1-3人适用 超高性价比断货款【P155】',
+            articlePrice: '京东价: ¥499.90 <br/>券后价: ¥429.90',
+            srcPath: './imgs/jiadian1.jpg',
+            srcPathBig: './imgs/jiadian1big.jpg',
+            articleCoupon: 'https://u.jd.com/aiZwdgB',
+            articlePacket: 'https://u.jd.com/auWkRAv'
+        },
+
+    ];
+
+
+    const listPhone = [
+        {
+            titleName: '【京东】荣耀80 12GB+512GB 亮黑色 【MDZX】',
+            articlePrice: '京东价: ¥3099.00',
+            srcPath: './imgs/phone1.jpg',
+            srcPathBig: './imgs/phone1big.jpg',
+            articleCoupon: 'https://u.jd.com/ai6Hzbc',
+            articlePacket: 'https://u.jd.com/aQ6HH54'
+        },
+        {
+            titleName: '【京东】荣耀X50i 一亿像素超清影像 12GB+256GB超大双存 6.7英寸超窄边护眼全视屏 5G手机 12GB+256GB 幻夜黑',
+            articlePrice: '京东价: ¥1699.00',
+            srcPath: './imgs/phone2.jpg',
+            srcPathBig: './imgs/phone2big.jpg',
+            articleCoupon: 'https://u.jd.com/a86ZOI4',
+            articlePacket: 'https://u.jd.com/as6lUfm'
+        },
+        {
+            titleName: '【京东】【领券直降】Apple iPhone 13 (A2634) 256GB 红色 支持移动联通电信5G 双卡双待手机',
+            articlePrice: '京东价: ¥5699.00<br/>券后价: ¥5499.00',
+            srcPath: './imgs/phone3.jpg',
+            srcPathBig: './imgs/phone3big.jpg',
+            articleCoupon: 'https://u.jd.com/auWH44W',
+            articlePacket: 'https://u.jd.com/abWjic3'
+        },
+        {
+            titleName: '【京东】【领券直降】Apple iPhone 13 (A2634) 128GB 蓝色 支持移动联通电信5G 双卡双待手机',
+            articlePrice: '京东价: ¥4799.00<br/>券后价: ¥4599.00',
+            srcPath: './imgs/phone4.jpg',
+            srcPathBig: './imgs/phone4big.jpg',
+            articleCoupon: 'https://u.jd.com/asWVkhx',
+            articlePacket: 'https://u.jd.com/azWlnH2'
+        },
+        {
+            titleName: '【京东】【领券直降】Apple iPhone 13 (A2634) 512GB 蓝色 支持移动联通电信5G 双卡双待手机',
+            articlePrice: '京东价: ¥7499.00<br/>券后价: ¥7299.00',
+            srcPath: './imgs/phone5.jpg',
+            srcPathBig: './imgs/phone5big.jpg',
+            articleCoupon: 'https://u.jd.com/azWlqaE',
+            articlePacket: 'https://u.jd.com/asWc8gU'
+        },
+        {
+            titleName: '【京东】华为/HUAWEI P60 超聚光XMAGE影像 双向北斗卫星消息 256GB 洛可可白 鸿蒙曲面屏 智能旗舰手机',
+            articlePrice: '京东价: ¥4887.00',
+            srcPath: './imgs/phone6.jpg',
+            srcPathBig: './imgs/phone6big.jpg',
+            articleCoupon: 'https://u.jd.com/azWHJzm',
+            articlePacket: 'https://u.jd.com/azWRhv1'
+        },
+        {
+            titleName: '【京东】HUAWEI Mate 50  256GB曜金黑华为鸿蒙手机',
+            articlePrice: '京东价: ¥4399.00',
+            srcPath: './imgs/phone7.jpg',
+            srcPathBig: './imgs/phone7big.jpg',
+            articleCoupon: 'https://u.jd.com/auWTBNl',
+            articlePacket: 'https://u.jd.com/auWALaw'
+        },
+        {
+            titleName: '【京东】HUAWEI nova 10 【内置66W华为超级快充】 前置6000万超广角镜头 6.88mm轻薄机身 256GB 10号色 华为手机',
+            articlePrice: '京东价: ¥2499.00',
+            srcPath: './imgs/phone8.jpg',
+            srcPathBig: './imgs/phone8big.jpg',
+            articleCoupon: 'https://u.jd.com/aqWAadA',
+            articlePacket: 'https://u.jd.com/aQWXH7e'
+        },
+        {
+            titleName: '【京东】【领券直降】荣耀Magic5 Pro  第二代骁龙8旗舰芯片 荣耀青海湖电池  鹰眼相机  5G手机 16GB+512GB 亮黑色 20周年纪念款',
+            articlePrice: '京东价: ¥5899.00<br/>券后价: ¥5849.00',
+            srcPath: './imgs/phone9.jpg',
+            srcPathBig: './imgs/phone9big.jpg',
+            articleCoupon: 'https://u.jd.com/aqWHdEf',
+            articlePacket: 'https://u.jd.com/abWfn7v'
+        },
+    ];
+    const listComputer = [
+        {
+            titleName: '【京东】荣耀笔记本电脑MagicBook X 16 Pro 2023 13代酷睿标压i5-13500H 16+1T 16吋高性能轻薄本 大电池 手机互联',
+            articlePrice: '京东价: ¥4299.00',
+            srcPath: './imgs/computer1.jpg',
+            srcPathBig: './imgs/computer1big.jpg',
+            articleCoupon: 'https://u.jd.com/aqWU5SA',
+            articlePacket: 'https://u.jd.com/asWNUez'
+        },
+        {
+            titleName: '【京东】【今日抢购】荣耀笔记本电脑MagicBook 14 2023 13代酷睿高性能轻薄本  标压i5-13500H 16G 1TB 2.5K高刷屏 手机互联',
+            articlePrice: '京东价: ¥5299.00',
+            srcPath: './imgs/computer2.jpg',
+            srcPathBig: './imgs/computer2big.jpg',
+            articleCoupon: 'https://u.jd.com/auWUm5L',
+            articlePacket: 'https://u.jd.com/abWXjx4'
+        },
+        {
+            titleName: '【京东】惠普(HP)战99 2022 15.6英寸高性能笔记本电脑设计师创作本工作站 12代酷睿i5-12500H 16G 512G RTX3050Ti 高色域',
+            articlePrice: '京东价: ¥5499.00',
+            srcPath: './imgs/computer3.jpg',
+            srcPathBig: './imgs/computer3big.jpg',
+            articleCoupon: 'https://u.jd.com/a8WVvjX',
+            articlePacket: 'https://u.jd.com/a8WV8NY'
+        },
+        {
+            titleName: '【京东】【领券直降】ThinkPad T14 AMD锐龙版 14英寸商务办公高性能轻薄笔记本电脑 R7Pro 4750U 16G 512G 0MCD',
+            articlePrice: '京东价: ¥4299.00<br/>券后价: ¥4099.00',
+            srcPath: './imgs/computer4.jpg',
+            srcPathBig: './imgs/computer4big.jpg',
+            articleCoupon: 'https://u.jd.com/azWN6Nn',
+            articlePacket: 'https://u.jd.com/aqWXIfI'
+        },
+        {
+            titleName: '【京东】小米笔记本电脑 Redmi BookPro14 2.5K120hz高清屏 办公高性能轻薄本(12代酷睿i7 16G 512G win11 独显)',
+            articlePrice: '京东价: ¥4519.00',
+            srcPath: './imgs/computer5.jpg',
+            srcPathBig: './imgs/computer5big.jpg',
+            articleCoupon: 'https://u.jd.com/a8WXllk',
+            articlePacket: 'https://u.jd.com/auWU2tv'
+        },
+        {
+            titleName: '【京东】ThinkPad联想笔记本电脑ThinkPad P15v(09CD)英特尔酷睿i7 15.6英寸高性能工作站12代i7-12700H 16G 512G T600 高色域',
+            articlePrice: '京东价: ¥8699.00',
+            srcPath: './imgs/computer6.jpg',
+            srcPathBig: './imgs/computer6big.jpg',
+            articleCoupon: 'https://u.jd.com/aiWE8DD',
+            articlePacket: 'https://u.jd.com/azWlxAv'
+        },
+        {
+            titleName: '【京东】联想（Lenovo）拯救者R9000P 2023游戏笔记本电脑 16英寸专业电竞本(新R9-7945HX 16G 1T RTX4060显卡 2.5k 240Hz高色域)灰',
+            articlePrice: '京东价: ¥8999.00',
+            srcPath: './imgs/computer7.jpg',
+            srcPathBig: './imgs/computer7big.jpg',
+            articleCoupon: 'https://u.jd.com/aqW9uy0',
+            articlePacket: 'https://u.jd.com/asW4rIK'
+        },
+        {
+            titleName: '【京东】惠普（HP）暗影精灵9 Intel 16.1英寸游戏本 笔记本电脑(英特尔13代酷睿i9-13900HX RTX4060 16G 1TBSSD 2.5K 240Hz)',
+            articlePrice: '京东价: ¥8499.00',
+            srcPath: './imgs/computer8.jpg',
+            srcPathBig: './imgs/computer8big.jpg',
+            articleCoupon: 'https://u.jd.com/aiW9o1B',
+            articlePacket: 'https://u.jd.com/asWlpOj'
+        },
+        {
+            titleName: '【京东】戴尔（DELL）游匣G15 15.6英寸游戏本 笔记本电脑(14核i7 16G 512G RTX3060 165Hz高色域电竞屏)黑',
+            articlePrice: '京东价: ¥5999.00',
+            srcPath: './imgs/computer9.jpg',
+            srcPathBig: './imgs/computer9big.jpg',
+            articleCoupon: 'https://u.jd.com/azWRnjH',
+            articlePacket: 'https://u.jd.com/asW7sVl'
+        },
+    ]
+
+    const listMeizhuang = [
+        {
+            titleName: '【京东】【领券直降】雅诗兰黛小棕瓶特润修护精华液50ml面部精华护肤品化妆品生日礼物送女友',
+            articlePrice: '京东价: ¥935.00 <br/>券后价: ¥865.00',
+            srcPath: './imgs/meizhuang1.jpg',
+            srcPathBig: './imgs/meizhuang1big.jpg',
+            articleCoupon: 'https://u.jd.com/a8tIigR',
+            articlePacket: 'https://u.jd.com/ait8Rtj'
+        },
+        {
+            titleName: '【京东】【领券直降】雅诗兰黛樱花原生液精华水200ml面部精华护肤品化妆水补水保湿生日礼物',
+            articlePrice: '京东价: ¥900.00 <br/>券后价: ¥830.00',
+            srcPath: './imgs/meizhuang2.jpg',
+            srcPathBig: './imgs/meizhuang2big.jpg',
+            articleCoupon: 'https://u.jd.com/aqtKfzO',
+            articlePacket: 'https://u.jd.com/aut8q8a'
+        },
+        {
+            titleName: '【京东】SK-II神仙水230ml精华液sk2补水保湿skii护肤品套装化妆品生日礼物女',
+            articlePrice: '京东价: ¥1690.00',
+            srcPath: './imgs/meizhuang3.jpg',
+            srcPathBig: './imgs/meizhuang3big.jpg',
+            articleCoupon: 'https://u.jd.com/autTVW1',
+            articlePacket: 'https://u.jd.com/autZ2YX'
+        },
+        {
+            titleName: '【京东】【领券直降】珀莱雅补水护肤品套装 化妆品水乳套装女护肤套装 护肤礼盒水漾肌密套装',
+            articlePrice: '京东价: ¥269.00<br/>券后价: ¥259.00',
+            srcPath: './imgs/meizhuang4.jpg',
+            srcPathBig: './imgs/meizhuang4big.jpg',
+            articleCoupon: 'https://u.jd.com/aut3l00',
+            articlePacket: 'https://u.jd.com/ait2N3s'
+        },
+        {
+            titleName: '【京东】【领券直降】珀莱雅紧致肌密洁水乳套装 补水护肤品套装化妆品套装护肤套装 护肤礼盒',
+            articlePrice: '京东价: ¥279.00<br/>券后价: ¥269.00',
+            srcPath: './imgs/meizhuang5.jpg',
+            srcPathBig: './imgs/meizhuang5big.jpg',
+            articleCoupon: 'https://u.jd.com/auLUHga',
+            articlePacket: 'https://u.jd.com/auLZkkD'
+        },
+        {
+            titleName: '【京东】SK-II小灯泡美白精华液30ml(新一代)sk2美白淡斑skii护肤品套装化妆品',
+            articlePrice: '京东价: ¥1230.00',
+            srcPath: './imgs/meizhuang6.jpg',
+            srcPathBig: './imgs/meizhuang6big.jpg',
+            articleCoupon: 'https://u.jd.com/asCi9FZ',
+            articlePacket: 'https://u.jd.com/asCuU2n'
+        },
+        {
+            titleName: '【京东】【京喜】【领券直降】泊泉雅 墨菊巨补水化妆品套装补水保湿面部护理组合产品无盒 化妆品套装',
+            articlePrice: '京东价: ¥1000.00<br/>券后价: ¥500.00',
+            srcPath: './imgs/meizhuang7.jpg',
+            srcPathBig: './imgs/meizhuang7big.jpg',
+            articleCoupon: 'https://u.jd.com/aqZwOkV',
+            articlePacket: 'https://u.jd.com/auWFMIz'
+        },
+    ];
+
+
+    function toSkip(articleCoupon) {
+        window.location.href = articleCoupon;
+    };
+
+    const listTable = [
+        {
+            title: "家电",
+            list: listJiadian,
+        },
+        {
+            title: "手机",
+            list: listPhone,
+        },
+        {
+            title: "电脑",
+            list: listComputer,
+        },
+        {
+            title: "美妆/护肤",
+            list: listMeizhuang,
+        }
+    ]
+
+    let dataList = [];
+
+    function tableClick(title) {
+        dataList = [];
+        for (let j = 0; j < listTable.length; j++) {
+            let listTableElement = listTable[j];
+            if (title == listTableElement.title) {
+                dataList = listTableElement.list.slice();
+                break;
+            }
+        }
+        let html = '';
+        for (let i = 0; i < dataList.length; i++) {
+            html += '<div class="article"><img class="articleImg" src=' + dataList[i].srcPath + '></img><img class="articleImgBig" src=' + dataList[i].srcPathBig + '></img><div class="articleContent" onclick="toSkip(\'' + dataList[i].articleCoupon + '\')"><div class="articleTitle">' + dataList[i].titleName + '</div><div class="articlePrice">' + dataList[i].articlePrice + '</div><a class="articleCoupon" href=' + dataList[i].articleCoupon + '>领券抢购: ' + dataList[i].articleCoupon + '</a><a class="articlePacket" href=' + dataList[i].articlePacket + '>领红包 更省钱:' + dataList[i].articlePacket + ' </a></div></div><div class="divider"></div>'
+        }
+        document.getElementById('contentTest').innerHTML = html;
+        getData("20")
+    }
+
+
+    Date.prototype.format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12, //小时
+            "H+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt))
+            fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+
+    function getData(eliteId) {
+
+        var settings = {
+            "url": 'https://ydh.zeabur.app/jd?eliteId=' + eliteId + '&timestamp=2023-06-09 16:34:55',
+            "method": "GET",
+            "timeout": 3000,
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+        /*
+              网站需要备案 用APP的调用接口会出现跨域问题
+              var form = new FormData();
+                form.append("360buy_param_json", "{\"goodsReq\":{\"eliteId\":\"" + eliteId + "\",\"pageIndex\":1,\"pageSize\":10}}");
+                form.append("app_key", "8724dd097e248b402993f9550b287e0d");
+                form.append("format", "json");
+                form.append("method", "jd.union.open.goods.jingfen.query");
+                form.append("sign", "AA9F9DF3610F0A021C4E722FE6C9A594");
+                form.append("sign_method", "md5");
+                form.append("timestamp", "2023-06-06 16:50:21");
+                form.append("v", "1.0");
+
+                var settings = {
+                    "url": "https://api.jd.com/routerjson",
+                    "method": "POST",
+                    "timeout": 2000,
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": form
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });*/
+
+
+        /*   let formData = new FormData();
+           let timestamp = new Date().format("yyyy-MM-dd HH:mm:ss");
+           let jsonParam = '{"goodsReq":{"eliteId":' + eliteId + ',"pageIndex":1,"pageSize":10}}';
+           formData.append('360buy_param_json', JSON.parse(jsonParam));
+           formData.append('app_key', '8724dd097e248b402993f9550b287e0d');
+           formData.append('format', 'json');
+           formData.append('method', 'jd.union.open.goods.jingfen.query');
+           formData.append('sign_method', 'md5');
+           formData.append('timestamp', timestamp);
+           formData.append('v', '1.0');
+           let str = 'c7b290141c2145ba9d052a563b5a03b6360buy_param_json' + jsonParam + 'app_key8724dd097e248b402993f9550b287e0d&formatjson&methodjd.union.open.goods.jingfen.query&sign_methodmd5&timestamp' + timestamp + 'v1.0c7b290141c2145ba9d052a563b5a03b6'
+           console.log(str);
+           let sign = hex_md5(str);
+           console.log(sign);
+           formData.append('sign', sign)
+           $.ajax({
+               url: 'https://api.jd.com/routerjson',
+               type: 'POST',
+               contentType: 'multipart/form-data',
+               data: formData,
+               success: function (jsonData) {
+                   console.log(jsonData);
+               },
+               error: function (jqXHR, textStatus, errorThrown) {
+                   console.log(textStatus, errorThrown);
+               }
+           })*/
+    }
+
+
+</script>

@@ -5,15 +5,19 @@ import org.example.Constants;
 import org.example.networks.HttpClientUtil;
 import org.example.utils.HttpMd5;
 import org.json.JSONObject;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.TreeMap;
 
-@RestController
+@Controller
 public class JdController {
     @RequestMapping("/jd")
-    String home(String eliteId, String timestamp) {
+    @CrossOrigin
+    @ResponseBody
+    public String home(String eliteId, String timestamp) {
         TreeMap<String, String> map = new TreeMap<>();
         map.put("app_key", Constants.APP_KEY_JD);
         map.put("method", Constants.JD_METHOD);
@@ -52,5 +56,10 @@ public class JdController {
             e.printStackTrace();
         }
         return queryResult;
+    }
+
+    @RequestMapping("/")
+    public String home() {
+        return "index";
     }
 }
