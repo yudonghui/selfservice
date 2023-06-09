@@ -174,6 +174,7 @@ public class HttpClientUtil {
                 }
             }
         }
+        logger.info(urlSB.toString());
         return HttpClientUtil.getRequest(urlSB.toString());
 
     }

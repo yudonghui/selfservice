@@ -3,7 +3,6 @@ package org.example.controller;
 import com.alibaba.fastjson.JSON;
 import org.example.Constants;
 import org.example.networks.HttpClientUtil;
-import org.example.utils.DateFormtUtils;
 import org.example.utils.HttpMd5;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +13,14 @@ import java.util.TreeMap;
 @RestController
 public class JdController {
     @RequestMapping("/jd")
-    String home(String eliteId) {
+    String home(String eliteId, String timestamp) {
         TreeMap<String, String> map = new TreeMap<>();
         map.put("app_key", Constants.APP_KEY_JD);
         map.put("method", Constants.JD_METHOD);
         map.put("v", "1.0");
         map.put("sign_method", "md5");
         map.put("format", "json");
-        map.put("timestamp", DateFormtUtils.getCurrentDate(DateFormtUtils.YMD_HMS));
+        map.put("timestamp", timestamp);
 
         TreeMap<String, Object> buy_param_json = new TreeMap<>();
         TreeMap<String, Object> goodsReq = new TreeMap<>();
