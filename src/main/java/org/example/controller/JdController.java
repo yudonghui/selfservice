@@ -30,12 +30,12 @@ public class JdController {
         map.put("sign_method", "md5");
         map.put("format", "json");
         map.put("timestamp", timestamp);
-
+        map.put("sortName", "comments");//按照评论数 排序
         TreeMap<String, Object> buy_param_json = new TreeMap<>();
         TreeMap<String, Object> goodsReq = new TreeMap<>();
         goodsReq.put("eliteId", eliteId);
         goodsReq.put("pageIndex", 1);
-        goodsReq.put("pageSize", 10);
+        goodsReq.put("pageSize", 15);
         buy_param_json.put("goodsReq", goodsReq);
         map.put("360buy_param_json", JSON.toJSONString(buy_param_json));
 
