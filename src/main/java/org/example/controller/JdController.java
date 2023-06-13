@@ -3,6 +3,7 @@ package org.example.controller;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.apache.http.util.TextUtils;
 import org.example.Constants;
 import org.example.entitys.*;
 import org.example.networks.HttpClientUtil;
@@ -35,8 +36,8 @@ public class JdController {
         goodsReq.put("eliteId", eliteId);
         goodsReq.put("pageIndex", 1);
         goodsReq.put("pageSize", 15);
-        // 排序字段(price：单价, commissionShare：佣金比例, commission：佣金， inOrderCount30DaysSku：sku维度30天引单量，comments：评论数，goodComments：好评数)
-        goodsReq.put("sortName", "goodComments");//按照评论数 排序
+        goodsReq.put("sortName",getSortName());//按照评论数 排序
+        //goodsReq.put("fields", "hotWords");//支持出参数据筛选，逗号','分隔，目前可用：videoInfo(视频信息),hotWords(热词),similar(相似推荐商品),documentInfo(段子信息)，skuLabelInfo（商品标签），promotionLabelInfo（商品促销标签）,companyType（小店标识）,purchasePriceInfo（到手价）
         buy_param_json.put("goodsReq", goodsReq);
         map.put("360buy_param_json", JSON.toJSONString(buy_param_json));
 
@@ -84,7 +85,20 @@ public class JdController {
                         resultJdEntiy.setImgUrl(imageList.get(0).getUrl());
                     }
                     resultJdEntiy.setMaterialUrl(jdMaterialEntity.getMaterialUrl());
-                    resultJdEntiy.setComments(jdMaterialEntity.getComments());
+                    long comments = getLong(jdMaterialEntity.getComments());
+                    String commentStr;
+                    if (comments > 10000000) {
+                        commentStr = comments / 10000000 + "千万+";
+                    } else if (comments > 1000000) {
+                        commentStr = comments / 1000000 + "00万+";
+                    } else if (comments > 100000) {
+                        commentStr = comments / 100000 + "0万+";
+                    } else if (comments > 10000) {
+                        commentStr = comments / 10000 + "万+";
+                    } else {
+                        commentStr = comments + "";
+                    }
+                    resultJdEntiy.setComments(commentStr);
                     resultJdEntiy.setGoodCommentsShare(jdMaterialEntity.getGoodCommentsShare());
                     resultJdEntiy.setHistoryPriceDay(priceInfo.getHistoryPriceDay());
                     resultJdEntiy.setPrice(priceInfo.getPrice());
@@ -114,5 +128,22 @@ public class JdController {
     @RequestMapping("/")
     public String home() {
         return "index";
+    }
+
+    public static long getLong(String string) {
+        if (TextUtils.isEmpty(string)) return 0;
+        try {
+            long anInt = Long.parseLong(string);
+            return anInt;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public static String getSortName() {
+        // 排序字段(price：单价, commissionShare：佣金比例, commission：佣金， inOrderCount30DaysSku：sku维度30天引单量，comments：评论数，goodComments：好评数)
+        String[] sortNames = {"price", "commissionShare", "commission", "inOrderCount30DaysSku", "comments", "goodComments"};
+        int num = (int) (Math.random() * 6);
+        return sortNames[num];
     }
 }
