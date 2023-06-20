@@ -29,7 +29,7 @@ public class CouponInfoEntity implements Serializable {
     private int isBest;//最优优惠券，1：是；0：否，购买一件商品可使用的面额最大优惠券
     private String link;//券链接
     private int platformType;//券使用平台 (平台类型：0 - 全平台券，1 - 限平台券)
-    private int quota;//券消费限额
+    private double quota;//券消费限额
     private long useEndTime;//券有效使用结束时间(时间戳，毫秒)
     private long useStartTime;//券有效使用开始时间(时间戳，毫秒)
 
@@ -97,11 +97,11 @@ public class CouponInfoEntity implements Serializable {
         this.platformType = platformType;
     }
 
-    public int getQuota() {
+    public double getQuota() {
         return quota;
     }
 
-    public void setQuota(int quota) {
+    public void setQuota(double quota) {
         this.quota = quota;
     }
 

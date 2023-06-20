@@ -5,8 +5,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.util.TextUtils;
 import org.example.Constants;
+import org.example.commons.CommonUtils;
 import org.example.entitys.*;
 import org.example.networks.HttpClientUtil;
+import org.example.networks.MsgCode;
+import org.example.utils.DateFormtUtils;
 import org.example.utils.HttpMd5;
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -19,7 +22,8 @@ import java.util.List;
 import java.util.TreeMap;
 
 @Controller
-public class JdController {
+public class GoodsController {
+
     @RequestMapping("/jd")
     @CrossOrigin
     @ResponseBody
@@ -33,10 +37,10 @@ public class JdController {
         map.put("timestamp", timestamp);
         TreeMap<String, Object> buy_param_json = new TreeMap<>();
         TreeMap<String, Object> goodsReq = new TreeMap<>();
-        goodsReq.put("eliteId", eliteId);
+        goodsReq.put("eliteId", TextUtils.isEmpty(eliteId) ? CommonUtils.randomJdCode() : eliteId);
         goodsReq.put("pageIndex", 1);
-        goodsReq.put("pageSize", 15);
-        goodsReq.put("sortName",getSortName());//按照评论数 排序
+        goodsReq.put("pageSize", 50);
+        goodsReq.put("sortName", getSortName());//按照评论数 排序
         //goodsReq.put("fields", "hotWords");//支持出参数据筛选，逗号','分隔，目前可用：videoInfo(视频信息),hotWords(热词),similar(相似推荐商品),documentInfo(段子信息)，skuLabelInfo（商品标签），promotionLabelInfo（商品促销标签）,companyType（小店标识）,purchasePriceInfo（到手价）
         buy_param_json.put("goodsReq", goodsReq);
         map.put("360buy_param_json", JSON.toJSONString(buy_param_json));
@@ -54,6 +58,7 @@ public class JdController {
                 JdBaseEntity<List<JdMaterialEntity>> jdBaseEntity = new Gson().fromJson(queryResult, new TypeToken<JdBaseEntity<List<JdMaterialEntity>>>() {
                 }.getType());
                 List<JdMaterialEntity> dataList = jdBaseEntity.getData();
+                ArrayList<ResultJdEntiy> resultJdOrigin = new ArrayList<>();
                 ArrayList<ResultJdEntiy> resultJdEntiys = new ArrayList<>();
                 for (int i = 0; i < dataList.size(); i++) {
                     JdMaterialEntity jdMaterialEntity = dataList.get(i);
@@ -105,7 +110,15 @@ public class JdController {
                     resultJdEntiy.setLowestCouponPrice(priceInfo.getLowestCouponPrice());
                     resultJdEntiy.setLowestPrice(priceInfo.getLowestPrice());
                     resultJdEntiy.setLowestPriceType(priceInfo.getLowestPriceType());
-                    resultJdEntiys.add(resultJdEntiy);
+                    resultJdOrigin.add(resultJdEntiy);
+                    if (resultJdEntiy.getDiscount() >= 1) {//优惠券不为空
+                        resultJdEntiys.add(resultJdEntiy);
+                    }
+                }
+                if (resultJdEntiys.size() < 5 && resultJdOrigin.size() > 10) {
+                    for (int i = 0; i < 10; i++) {
+                        resultJdEntiys.add(resultJdOrigin.get(i));
+                    }
                 }
                 JdBaseEntity jdBaseEntity1 = new JdBaseEntity();
                 jdBaseEntity1.setData(resultJdEntiys);
@@ -118,6 +131,51 @@ public class JdController {
                 queryResult = "{\"code\":" + code + ",\"data\":null,\"message\":" + zh_desc + "}";
             }
 
+        } catch (Exception e) {
+            queryResult = "{\"code\":2000,\"data\":null,\"message\":\"系统错误\"}";
+            e.printStackTrace();
+        }
+        return queryResult;
+    }
+
+    /**
+     *
+     */
+    @RequestMapping("/tb")
+    @CrossOrigin
+    @ResponseBody
+    public String homeTb(String materialId) {
+        TreeMap<String, Object> map = new TreeMap<>();
+        map.put("method", Constants.TB_METHOD);
+        map.put("app_key", Constants.APP_KEY_TB);
+        map.put("timestamp", DateFormtUtils.getCurrentDate(DateFormtUtils.YMD_HMS));
+        map.put("sign_method", "md5");
+        map.put("format", "json");
+        map.put("adzone_id", Constants.ADZONE_ID);
+        map.put("material_id", TextUtils.isEmpty(materialId) ? CommonUtils.randomTbCode() : materialId);
+        map.put("v", "2.0");
+        map.put("simplify", true);
+        map.put("page_no", "1");
+        map.put("page_size", "20");
+        String sign = HttpMd5.buildSignTb(map);
+        map.put("sign", sign);
+        String request = HttpClientUtil.getRequestO(Constants.TB_URL, map);
+        String queryResult = "";
+        try {
+            JSONObject jsonObject = new JSONObject(request);
+            if (!request.contains("error_response")) {
+                TbBaseEntity<List<MaterialEntity>> tbBaseEntity = new Gson().fromJson(request, new TypeToken<TbBaseEntity<List<MaterialEntity>>>() {
+                }.getType());
+                List<MaterialEntity> result_list = tbBaseEntity.getResult_list();
+                TbBaseEntity tbBaseEntity1 = new TbBaseEntity();
+                tbBaseEntity1.setCode(1000);
+                tbBaseEntity1.setResult_list(result_list);
+                queryResult = new Gson().toJson(tbBaseEntity1);
+            } else {
+                JSONObject error_response = jsonObject.getJSONObject("error_response");
+                int code = error_response.getInt("code");
+                queryResult = "{\"code\":" + code + ",\"data\":null,\"message\":" + MsgCode.getStrByCode(code) + "}";
+            }
         } catch (Exception e) {
             queryResult = "{\"code\":2000,\"data\":null,\"message\":\"系统错误\"}";
             e.printStackTrace();
@@ -145,5 +203,9 @@ public class JdController {
         String[] sortNames = {"price", "commissionShare", "commission", "inOrderCount30DaysSku", "comments", "goodComments"};
         int num = (int) (Math.random() * 6);
         return sortNames[num];
+    }
+
+    public ArrayList<ResultJdEntiy> getJdList(int pageIndex, int pageSize) {
+        return null;
     }
 }

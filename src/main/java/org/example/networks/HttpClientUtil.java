@@ -27,6 +27,7 @@ import org.apache.http.util.TextUtils;
 import org.example.Constants;
 import org.example.utils.DateFormtUtils;
 import org.example.utils.HttpMd5;
+import org.springframework.util.ObjectUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -168,6 +169,53 @@ public class HttpClientUtil {
                         urlSB.append(key);
                         urlSB.append("=");
                         urlSB.append(URLEncoder.encode(value, "UTF-8"));
+                    }
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        logger.info(urlSB.toString());
+        return HttpClientUtil.getRequest(urlSB.toString());
+
+    }
+
+    /**
+     * get请求带编码
+     *
+     * @param url
+     * @param paramMap 参数
+     */
+    public static String getRequestO(String url, Map<String, Object> paramMap) {
+        if (TextUtils.isEmpty(url)) {
+            return "";
+        }
+        StringBuffer urlSB = new StringBuffer(url);
+        if (paramMap != null && paramMap.size() > 0) {
+            for (String key : paramMap.keySet()) {
+                Object value = paramMap.get(key);
+                if (ObjectUtils.isEmpty(value)) {
+                    continue;
+                }
+                try {
+                    if (urlSB.indexOf("?") > -1) {
+                        urlSB.append("&");
+                        urlSB.append(key);
+                        urlSB.append("=");
+                        if (value instanceof String) {
+                            urlSB.append(URLEncoder.encode((String) value, "UTF-8"));
+                        } else {
+                            urlSB.append(value);
+                        }
+                    } else {
+                        urlSB.append("?");
+                        urlSB.append(key);
+                        urlSB.append("=");
+                        if (value instanceof String) {
+                            urlSB.append(URLEncoder.encode((String) value, "UTF-8"));
+                        } else {
+                            urlSB.append(value);
+                        }
                     }
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
