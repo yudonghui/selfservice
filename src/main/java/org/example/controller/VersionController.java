@@ -29,6 +29,8 @@ public class VersionController {
             String fileName = "templates/version.txt";
             //InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
             ClassPathResource resource = new ClassPathResource(fileName);
+            String path = resource.getPath();
+            logger.info("路径：{}", path);
             HashMap<String, Object> data = getFileContent(resource.getInputStream());
             mapBaseBack.setData(data);
         } catch (Exception e) {
@@ -50,9 +52,9 @@ public class VersionController {
             stringBuffer.append(entry.getKey() + "=" + entry.getValue() + "\r\n");
         }
         try {
-            //String path = new ClassPathResource("templates/version.txt").getPath();
-            String path = this.getClass().getClassLoader().getResource("templates/version.txt").getPath();
-            logger.info("路径：{}", path);
+            String path2 = new ClassPathResource("templates/version.txt").getURI().getPath();
+            String path = this.getClass().getClassLoader().getResource("templates/version.txt").toURI().getPath();
+            logger.info("路径：{} {}", path, path2);
             //File  file = (File) path;
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path)));
           /*  File  file = new ClassPathResource("version.txt").getFile();
