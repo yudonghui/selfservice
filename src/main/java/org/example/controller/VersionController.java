@@ -50,7 +50,9 @@ public class VersionController {
             stringBuffer.append(entry.getKey() + "=" + entry.getValue() + "\r\n");
         }
         try {
-            String path = new ClassPathResource("templates/version.txt").getPath();
+            //String path = new ClassPathResource("templates/version.txt").getPath();
+            String path = this.getClass().getClassLoader().getResource("templates/version.txt").getPath();
+            logger.info("路径：{}", path);
             //File  file = (File) path;
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path)));
           /*  File  file = new ClassPathResource("version.txt").getFile();
