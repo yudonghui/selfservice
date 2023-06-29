@@ -1,4 +1,4 @@
-package org.example;
+package org.example.commons;
 
 public class Constants {
     /**
@@ -26,4 +26,11 @@ public class Constants {
     public final static String APP_SECRET_TB = "a617a035736f95becd2a9c8db14962cf";//密钥
     public final static String ADZONE_ID = "114443250154";//推广位  mm_529810053_2700800303_114443250154
 
+    /**
+     * application.properties
+     * */
+    public final static String VERSION_APPURL = "version.appUrl";
+    public final static String VERSION_VERSION = "version.version";
+    public final static String VERSION_VERSIONNAME = "version.versionName";
+    public final static String VERSION_UPDATECONTENT = "version.updateContent";
 }

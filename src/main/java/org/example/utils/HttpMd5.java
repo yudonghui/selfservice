@@ -1,6 +1,6 @@
 package org.example.utils;
 
-import org.example.Constants;
+import org.example.commons.Constants;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

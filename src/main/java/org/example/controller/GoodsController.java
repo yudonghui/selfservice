@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.util.TextUtils;
-import org.example.Constants;
+import org.example.commons.Constants;
 import org.example.commons.CommonUtils;
 import org.example.entitys.*;
 import org.example.networks.HttpClientUtil;
@@ -12,21 +12,23 @@ import org.example.networks.MsgCode;
 import org.example.utils.DateFormtUtils;
 import org.example.utils.HttpMd5;
 import org.json.JSONObject;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
-@Controller
+@RestController
 public class GoodsController {
+    @RequestMapping(value = "/post",method = RequestMethod.POST)
+    @CrossOrigin//解决跨域问题
+    public String post(@RequestBody Map<String,Object> map) {
+        return map.get("name")+""+map.get("age");
+    }
 
     @RequestMapping("/jd")
-    @CrossOrigin
-    @ResponseBody
+    @CrossOrigin//解决跨域问题
     public String home(String eliteId, String timestamp) {
         TreeMap<String, String> map = new TreeMap<>();
         map.put("app_key", Constants.APP_KEY_JD);
@@ -143,7 +145,6 @@ public class GoodsController {
      */
     @RequestMapping("/tb")
     @CrossOrigin
-    @ResponseBody
     public String homeTb(String materialId) {
         TreeMap<String, Object> map = new TreeMap<>();
         map.put("method", Constants.TB_METHOD);

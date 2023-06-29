@@ -24,7 +24,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.apache.http.util.TextUtils;
-import org.example.Constants;
+import org.example.commons.Constants;
 import org.example.utils.DateFormtUtils;
 import org.example.utils.HttpMd5;
 import org.springframework.util.ObjectUtils;

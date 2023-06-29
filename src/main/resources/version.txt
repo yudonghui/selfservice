@@ -1,0 +1,4 @@
+appUrl=http://upgrade.app.mylikesh.cn/mouthbox/android/mouthbox.apk
+version=102
+versionName=1.0.2
+updateContent=修复和优化已知问题
