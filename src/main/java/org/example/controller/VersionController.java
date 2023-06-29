@@ -26,12 +26,9 @@ public class VersionController {
         mapBaseBack.setCode(1000);
         mapBaseBack.setMsg("成功");
         try {
-            String fileName = "version.txt";
+            String fileName = "templates/version.txt";
             //InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(fileName);
             ClassPathResource resource = new ClassPathResource(fileName);
-            ClassPathResource resourcef = new ClassPathResource("libreoffice");
-            String path = this.getClass().getClassLoader().getResource("libreoffice").getPath();
-            logger.info("路径：{} 文件路径：{},路径：{}", resource.getPath(), resourcef.getPath(), path);
             HashMap<String, Object> data = getFileContent(resource.getInputStream());
             mapBaseBack.setData(data);
         } catch (Exception e) {
@@ -53,7 +50,7 @@ public class VersionController {
             stringBuffer.append(entry.getKey() + "=" + entry.getValue() + "\r\n");
         }
         try {
-            String path = new ClassPathResource("version.txt").getURI().getPath();
+            String path = new ClassPathResource("templates/version.txt").getPath();
             //File  file = (File) path;
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path)));
           /*  File  file = new ClassPathResource("version.txt").getFile();
