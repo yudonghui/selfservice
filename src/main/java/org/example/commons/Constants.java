@@ -25,10 +25,11 @@ public class Constants {
     public final static String APP_KEY_TB = "33976106";//淘宝
     public final static String APP_SECRET_TB = "a617a035736f95becd2a9c8db14962cf";//密钥
     public final static String ADZONE_ID = "114443250154";//推广位  mm_529810053_2700800303_114443250154
-
+    //双色球
+    public static final String SSQ_HIS_URL = "http://www.cwl.gov.cn/cwl_admin/front/cwlkj/search/kjxx/findDrawNotice";
     /**
      * application.properties
-     * */
+     */
     public final static String VERSION_APPURL = "version.appUrl";
     public final static String VERSION_VERSION = "version.version";
     public final static String VERSION_VERSIONNAME = "version.versionName";

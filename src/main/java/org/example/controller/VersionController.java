@@ -56,7 +56,7 @@ public class VersionController {
             String path = this.getClass().getClassLoader().getResource("templates/version.txt").toURI().getPath();
             logger.info("路径：{} {}", path, path2);
             //File  file = (File) path;
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("/src/target/classes/templates/version.txt")));
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path2)));
           /*  File  file = new ClassPathResource("version.txt").getFile();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));*/
             bufferedWriter.write(stringBuffer.toString());
